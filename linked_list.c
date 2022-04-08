@@ -13,11 +13,9 @@ Link *link_new(int value, Link *prev)
 }
 void link_free(Link *link)
 {
-    Link *for_free;
-    while (link != NULL) {
-        for_free = link;
-        link = link->prev;
-        free(for_free);
+    for (Link *prev = NULL; link != NULL; link = prev) {
+        prev = link->prev;
+        free(link);
     }
 }
 

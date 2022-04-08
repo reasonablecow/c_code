@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct VecInt {
+typedef struct {
     int len;
     int *arr;
 } VecInt;
@@ -24,7 +24,7 @@ void vec_int_print(VecInt *vec)
 
 int main(int argc, char **argv)
 {
-    if (argc != 2) return 1;
+    if (argc != 2) return EXIT_FAILURE;
     int length = atoi(argv[1]);
     VecInt vec = vec_int_new(length);
     for (int *elem = vec.arr; elem < (vec.arr + vec.len); elem++) {
@@ -32,5 +32,5 @@ int main(int argc, char **argv)
     }
     vec_int_print(&vec);
     vec_int_del(vec);
-    return 0;
+    return EXIT_SUCCESS;
 }
